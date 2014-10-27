@@ -1,0 +1,67 @@
+{
+	"_id": "54455414ba22fcf82725ae91",
+	"appexpr": [],
+	"category": "Samples",
+	"connector": "http",
+	"dependency": "",
+	"description": "New York Times top 10 news API",
+	"format": "json",
+	"lock": {
+		"status": "unlocked"
+	},
+	"metadata": "{\"name\":\"root\",\"type\":\"root\",\"children\":{\"0\":{\"name\":\"0\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"0\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"0\"},\"styles\":{}}]},\"children\":{}},\"1\":{\"name\":\"1\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"1\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"1\"},\"styles\":{}}]},\"children\":{}},\"2\":{\"name\":\"2\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"2\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"2\"},\"styles\":{}}]},\"children\":{}},\"3\":{\"name\":\"3\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"3\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"3\"},\"styles\":{}}]},\"children\":{}},\"4\":{\"name\":\"4\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"4\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"4\"},\"styles\":{}}]},\"children\":{}},\"5\":{\"name\":\"5\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"5\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"5\"},\"styles\":{}}]},\"children\":{}},\"6\":{\"name\":\"6\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"6\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"6\"},\"styles\":{}}]},\"children\":{}},\"7\":{\"name\":\"7\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"7\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"7\"},\"styles\":{}}]},\"children\":{}},\"8\":{\"name\":\"8\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"8\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"8\"},\"styles\":{}}]},\"children\":{}},\"9\":{\"name\":\"9\",\"type\":\"String\",\"options\":{\"properties\":{},\"gcontrols\":[{\"name\":\"SimpleText\",\"perspective\":\"Default\",\"type\":\"TextField\",\"attributes\":{\"label\":\"9\"},\"styles\":{}},{\"name\":\"SimpleEdit\",\"perspective\":\"Edit\",\"type\":\"TextField\",\"attributes\":{\"label\":\"9\"},\"styles\":{}}]},\"children\":{}}}}",
+	"name": "qNyTimes",
+	"ownerId": "",
+	"parameters": [
+		{
+			"name": "api-key",
+			"type": "request",
+			"value": "a0a5c5a9d0bf8afd43fae30964e4f058:13:69906565",
+			"operation": "eq"
+		},
+		{
+			"name": "limit",
+			"type": "request",
+			"value": "10",
+			"operation": "eq"
+		}
+	],
+	"persistence": "none",
+	"postcode": [
+		{
+			"name": "ListPreparation",
+			"code": "var resp = [];\nvar index = 1;\nvar data = response.results;\nresponse = data.forEach(function(item) {\n  odd = index % 2;\n  resp.push({\n     'label':item.title,\n     'disabled': false,\n     'open': (index>1 ? false : true),\n     'classes': (odd ? 'info-odd' : 'info-even'),\n     'content':\n     {\n         'abstract': item.abstract,\n         'url': item.url,\n         'thumbnail_standard': item.thumbnail_standard,\n         \n     }\n   \n   });\n   index++;\n});\nresponse = resp;\nterminateFilter(response);"
+		}
+	],
+	"precode": [],
+	"requestDate": "2014-10-20T20:27:07.918Z",
+	"selector": ":root",
+	"service": {
+		"name": "",
+		"method": ""
+	},
+	"settings": {
+		"postrequestbody": "",
+		"authentication": "none",
+		"auth_password": "",
+		"typerequest": "HTTP_GET",
+		"urlrandom": "0",
+		"auth_userid": "",
+		"url": "http://api.nytimes.com/svc/news/v3/content/all/all/.json",
+		"dbdriver": "",
+		"dbnames": {
+			"database": "",
+			"collection": ""
+		}
+	},
+	"source": "ext",
+	"update_comment": "",
+	"visibility": "visible",
+	"versioning": {
+		"default": {
+			"last_action": "1414441807",
+			"status": "committed",
+			"user": "nicolas"
+		}
+	}
+}
